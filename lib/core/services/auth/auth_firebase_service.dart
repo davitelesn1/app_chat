@@ -11,8 +11,15 @@ class AuthFirebaseService implements AuthService {
   // If your Firestore database is not the default one, set its ID here.
   // Typically this should be '(default)'. If you created a custom database id,
   // e.g. 'chatdb', change the value below to that id and rebuild the app.
-  static const String _firestoreDatabaseId = '(default)';
+  // You can override this at build time with:
+  // flutter run --dart-define=FIRESTORE_DB_ID="(default)" (or your custom id)
+  static const String _firestoreDatabaseId = String.fromEnvironment(
+    'FIRESTORE_DB_ID',
+    defaultValue: 'chat-app-id',
+  );
+  
   static ChatUser? _currentUser;
+
   static final _userStream = Stream<ChatUser?>.multi((controller) async {
     final authChanges = FirebaseAuth.instance.authStateChanges();
     await for (final user in authChanges) {
@@ -97,17 +104,26 @@ class AuthFirebaseService implements AuthService {
   }
 
   Future<void> _saveChatUser(ChatUser user) async {
+    // Log which database and project we're targeting to aid diagnosis
+    print('[AuthFirebaseService] Firestore project: '
+        '${Firebase.app().options.projectId} | databaseId: $_firestoreDatabaseId');
+
     final store = FirebaseFirestore.instanceFor(
       app: Firebase.app(),
       databaseId: _firestoreDatabaseId,
     );
     final docRef = store.collection('users').doc(user.id);
 
-    return docRef.set({
-      'name': user.name,
-      'email': user.email,
-      'imageUrl': user.imageUrl,
-    });
+    try {
+      await docRef.set({
+        'name': user.name,
+        'email': user.email,
+        'imageUrl': user.imageUrl,
+      });
+    } on FirebaseException catch (e) {
+      print('[AuthFirebaseService] Firestore write error: ${e.code} - ${e.message}');
+      rethrow;
+    }
   }
 
   static ChatUser _toChatUser(User user, [String? imageUrl]) {
