@@ -8,7 +8,7 @@ Aplicativo de chat em tempo real construído em Flutter, integrado ao ecossistem
 	<img src="assets/demo/demo.jpg" alt="Chat App preview" width="300"/>
 </p>
 
-## � Funcionalidades
+## ✨ Funcionalidades
 
 - Autenticação por e-mail/senha com upload de avatar opcional
 - Chat em tempo real usando Cloud Firestore
@@ -24,39 +24,41 @@ Aplicativo de chat em tempo real construído em Flutter, integrado ao ecossistem
 - Manipulação de uploads de arquivo e URLs públicos com Firebase Storage
 - Tratamento de permissões e canais de notificação com Firebase Messaging
 
-## � Estrutura Principal
+## 🗂️ Estrutura Principal
 
 ```
 lib/
-├── main.dart
-├── firebase_options.dart
-├── components/
-│   ├── auth_form.dart
-│   ├── message_bubble.dart
-│   ├── messages.dart
-│   ├── new_message.dart
-│   └── user_image_picker.dart
-├── core/
-│   ├── models/
-│   │   ├── auth_form_data.dart
-│   │   ├── chat_message.dart
-│   │   ├── chat_notification.dart
-│   │   └── chat_user.dart
-│   └── services/
-│       ├── auth/
-│       │   ├── auth_firebase_service.dart
-│       │   └── auth_service..dart
-│       ├── chat/
-│       │   ├── chat_firebase_service.dart
-│       │   └── chat_service.dart
-│       └── notification/
-│           └── chat_notification_service.dart
-└── pages/
-		├── auth_or_app_page.dart
-		├── auth_page.dart
-		├── chat_page.dart
-        ├── loading_page.dart
-		└── notification_page.dart
+├─ main.dart
+├─ firebase_options.dart
+├─ components/
+│  ├─ auth_form.dart
+│  ├─ message_bubble.dart
+│  ├─ messages.dart
+│  ├─ new_message.dart
+│  └─ user_image_picker.dart
+├─ core/
+│  ├─ models/
+│  │  ├─ auth_form_data.dart
+│  │  ├─ chat_message.dart
+│  │  ├─ chat_notification.dart
+│  │  └─ chat_user.dart
+│  └─ services/
+│     ├─ auth/
+│     │  ├─ auth_firebase_service.dart
+│     │  ├─ auth_mock_service.dart
+│     │  └─ auth_service..dart
+│     ├─ chat/
+│     │  ├─ chat_firebase_service.dart
+│     │  ├─ chat_mock_service.dart
+│     │  └─ chat_service.dart
+│     └─ notification/
+│        └─ chat_notification_service.dart
+└─ pages/
+   ├─ auth_or_app_page.dart
+   ├─ auth_page.dart
+   ├─ chat_page.dart
+   ├─ loading_page.dart
+   └─ notification_page.dart
 ```
 
 ## 🧑‍💻 Tecnologias e Pacotes
