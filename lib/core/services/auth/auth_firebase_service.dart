@@ -105,8 +105,6 @@ class AuthFirebaseService implements AuthService {
 
   Future<void> _saveChatUser(ChatUser user) async {
     // Log which database and project we're targeting to aid diagnosis
-    print('[AuthFirebaseService] Firestore project: '
-        '${Firebase.app().options.projectId} | databaseId: $_firestoreDatabaseId');
 
     final store = FirebaseFirestore.instanceFor(
       app: Firebase.app(),
@@ -120,8 +118,7 @@ class AuthFirebaseService implements AuthService {
         'email': user.email,
         'imageUrl': user.imageUrl,
       });
-    } on FirebaseException catch (e) {
-      print('[AuthFirebaseService] Firestore write error: ${e.code} - ${e.message}');
+    } on FirebaseException {
       rethrow;
     }
   }

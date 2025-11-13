@@ -21,11 +21,10 @@ class _NewMessageState extends State<NewMessage> {
 
   Future<void> _sendMessage() async {
     final user = AuthService().currentUser;
-    final text = _messageController.text.trim();
+    if (user == null || _message.isEmpty) return;
 
-    if (user == null || text.isEmpty) return;
-
-    await ChatService().save(text, user);
+    final message = await ChatService().save(_message, user);
+    print(message.id);
     setState(() {
       _messageController.clear();
       _message = '';
