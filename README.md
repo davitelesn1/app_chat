@@ -5,7 +5,7 @@ Aplicativo de chat em tempo real construído em Flutter, integrado ao ecossistem
 ## 📱 Demonstração
 
 <p align="center">
-	<img src="assets/demo/demo.png" alt="Chat App preview" width="300"/>
+	<img src="assets/demo/demo.jpg" alt="Chat App preview" width="300"/>
 </p>
 
 ## � Funcionalidades
@@ -55,7 +55,8 @@ lib/
 		├── auth_or_app_page.dart
 		├── auth_page.dart
 		├── chat_page.dart
-		└── loading_page.dart
+        ├── loading_page.dart
+		└── notification_page.dart
 ```
 
 ## 🧑‍💻 Tecnologias e Pacotes
@@ -77,7 +78,7 @@ flutter pub get
 flutter run
 ```
 
-> Algumas funcionalidades (mensagens push, App Check) exigem dispositivos reais ou configuração adicional emulando Play Services.
+> Algumas funcionalidades (mensagens push, App Check) podem exigir dispositivos reais ou configuração adicional emulando Play Services.
 
 ## 📌 Observações
 
